@@ -444,11 +444,44 @@ const supportingProjects = [
     ],
   },
   {
+    id: "activecampus-go",
     title: "ActiveCampus Go",
+    subtitle: "Gamified Location-Based Campus Fitness Platform",
+    course: "PUP Technology Festival 2025 Hackathon",
     role: "UI and Visual Asset Contributor",
     description:
-      "Contributed pixel-art visual assets and interface ideas for a gamified, location-based campus fitness platform during the PUP Technology Festival 2025 Hackathon.",
-    tags: ["UI Contribution", "Pixel Art", "Hackathon", "Team Repository"],
+      "Contributed pixel-art visual assets and interface ideas for a gamified, location-based campus fitness platform designed around campus movement, activity tracking, rewards, and student engagement.",
+    scopeNote:
+      "My contribution focused on UI ideas and pixel-art visual assets. I did not build the Firebase or backend functionality.",
+    tags: [
+      "UI Contribution",
+      "Pixel Art",
+      "Gamification",
+      "Location-Based App",
+      "Hackathon",
+    ],
+    coverImage:
+      "/assets/projects/activecampus-go/activecampus-map-dashboard.png",
+    coverAlt:
+      "ActiveCampus Go dashboard showing a campus map, activity markers, campus energy points, daily steps, and rank.",
+    evidenceIntro:
+      "Selected product screens from the team hackathon project, highlighting the gamified interface and pixel-art visual direction.",
+    evidence: [
+      {
+        title: "Character and Outfit System",
+        description:
+          "Gamified customization screen with campus-themed pixel-art characters, outfit options, and Campus Energy rewards.",
+        src: "/assets/projects/activecampus-go/activecampus-character-outfits.png",
+        alt: "ActiveCampus Go character customization and outfit-selection screen.",
+      },
+      {
+        title: "Campus Energy Leaderboard",
+        description:
+          "Leaderboard screen showing the competitive reward system based on Campus Energy points and player level.",
+        src: "/assets/projects/activecampus-go/activecampus-leaderboard.png",
+        alt: "ActiveCampus Go Campus Energy leaderboard screen.",
+      },
+    ],
     link: "https://github.com/aidantiu/ActiveCAMPUS-Go",
     linkLabel: "View team repository",
   },
