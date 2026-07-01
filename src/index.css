@@ -1481,6 +1481,18 @@ svg {
   padding: 36px;
 }
 
+.resume-download {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 25px;
+  margin-bottom: 14px;
+}
+
+.resource-card .text-link {
+  display: flex;
+  margin-top: 0;
+}
+
 .resource-card h2 {
   max-width: 450px;
   font-size: clamp(1.75rem, 3vw, 2.45rem);

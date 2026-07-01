@@ -1123,15 +1123,29 @@ function App() {
           <div className="container resource-grid">
             <article className="resource-card">
               <p className="eyebrow">Resume</p>
-              <h2>Updated resume PDF coming next.</h2>
+              <h2>Internship-ready resume.</h2>
               <p>
-                Once you finish updating your resume with this portfolio link,
-                we will add the downloadable file here as{" "}
-                <strong>Ralph-Andrei-Castillo-Resume.pdf</strong>.
+                Download my resume for a concise overview of my technical
+                experience, projects, hardware work, networking background,
+                and academic credentials.
               </p>
 
-              <a className="text-link" href="#contact">
-                Request a resume by email
+              <a
+                className="button button-primary resume-download"
+                href="/documents/Ralph-Andrei-Castillo-Resume.pdf"
+                download
+              >
+                Download resume PDF
+                <ExternalArrow />
+              </a>
+
+              <a
+                className="text-link"
+                href="/documents/Ralph-Andrei-Castillo-Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open in browser
                 <ExternalArrow />
               </a>
             </article>
