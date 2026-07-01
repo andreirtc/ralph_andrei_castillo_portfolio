@@ -686,10 +686,11 @@ function App() {
             </div>
 
             <aside className="profile-card" aria-label="Professional profile">
-              <div className="profile-photo-placeholder">
-                <div className="photo-grid" />
-                <div className="profile-monogram">RC</div>
-                <p>Professional photo will be added here</p>
+              <div className="profile-photo">
+                <img
+                  src="/assets/profile/ralph-castillo-profile.jpeg"
+                  alt="Ralph Andrei T. Castillo"
+                />
               </div>
 
               <div className="profile-card-info">

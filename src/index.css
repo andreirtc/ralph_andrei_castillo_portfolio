@@ -444,6 +444,20 @@ svg {
   text-transform: uppercase;
 }
 
+.profile-photo {
+  min-height: 370px;
+  overflow: hidden;
+  background: var(--surface-strong);
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 370px;
+  object-fit: cover;
+  object-position: 56% center;
+}
+
 .profile-card-info {
   display: flex;
   align-items: end;
@@ -1781,6 +1795,11 @@ svg {
   }
 
   .profile-photo-placeholder {
+    min-height: 315px;
+  }
+
+  .profile-photo,
+  .profile-photo img {
     min-height: 315px;
   }
 
