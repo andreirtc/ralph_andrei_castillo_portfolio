@@ -123,6 +123,8 @@ const featuredProjects = [
       "Keypad",
       "Servos",
     ],
+    evidenceIntro:
+      "Real interface, schematic, and PCB documentation from the SolAlign project.",
     evidence: [
       {
         title: "LDR Diagnostic Display",
@@ -175,8 +177,13 @@ const featuredProjects = [
     visualLabel: "Topology • Routing • Security",
     visualCode: "33 ENDPOINTS",
     className: "visual-network-security",
+    coverImage: "/assets/projects/network-security/network-security-topology.png",
+    coverAlt:
+      "Cisco Packet Tracer three-tier enterprise network topology with department, wireless, server, and guest network zones.",
+    coverNote:
+      "Three-tier topology with department, wireless, server, and guest network zones.",
     challenge:
-      "Design an enterprise network that includes segmentation, routing redundancy, security controls, and operational monitoring.",
+      "Design an enterprise network that includes segmentation, routing redundancy, security controls, wireless access, and operational monitoring.",
     contribution:
       "Led the project design and implemented or integrated configurations with guidance and learning support during the development process.",
     outcome:
@@ -188,6 +195,68 @@ const featuredProjects = [
       "HSRP",
       "EtherChannel",
       "ACLs",
+      "WLC",
+      "Syslog",
+    ],
+    evidenceIntro:
+      "Actual implementation and validation screenshots from the Cisco Packet Tracer enterprise-network project.",
+    evidence: [
+      {
+        title: "Three-Tier Enterprise Topology",
+        description:
+          "Full Packet Tracer design showing the core, redundant distribution layer, departmental VLAN zones, servers, wireless access, and guest network segment.",
+        src: "/assets/projects/network-security/network-security-topology.png",
+        alt: "Full Cisco Packet Tracer three-tier enterprise network topology.",
+        kind: "topology",
+      },
+      {
+        title: "End-to-End Connectivity Validation",
+        description:
+          "Successful PDU tests validate inter-VLAN communication, core routing, internet access, wireless egress, and guest internet reachability.",
+        src: "/assets/projects/network-security/network-security-pdu-success.png",
+        alt: "Packet Tracer PDU List showing successful ICMP validation tests.",
+        kind: "proof",
+      },
+      {
+        title: "Guest ACL Enforcement",
+        description:
+          "Failed PDU tests show guest devices being blocked from reaching internal VLAN endpoints, validating the access-control policy.",
+        src: "/assets/projects/network-security/network-security-acl-blocked.png",
+        alt: "Packet Tracer PDU List showing failed guest-to-internal access attempts.",
+        kind: "proof",
+      },
+      {
+        title: "HSRP Active Gateway",
+        description:
+          "Distribution Switch A is the active gateway for the configured VLAN groups, using higher priority and preemption.",
+        src: "/assets/projects/network-security/network-security-hsrp-a.png",
+        alt: "Dist Switch A show standby brief output showing active HSRP state.",
+        kind: "console",
+      },
+      {
+        title: "HSRP Standby Gateway",
+        description:
+          "Distribution Switch B remains in standby state, ready to take over gateway service if the active switch becomes unavailable.",
+        src: "/assets/projects/network-security/network-security-hsrp-b.png",
+        alt: "Dist Switch B show standby brief output showing standby HSRP state.",
+        kind: "console",
+      },
+      {
+        title: "Syslog Event Monitoring",
+        description:
+          "Centralized Syslog view receiving configuration and interface-state events from the network device.",
+        src: "/assets/projects/network-security/network-security-syslog.png",
+        alt: "Cisco Packet Tracer Syslog service showing received device events.",
+        kind: "monitor",
+      },
+      {
+        title: "Wireless LAN Configuration",
+        description:
+          "Wireless controller configuration showing Sales_WiFi with WPA2 authentication and the separate Guest_WiFi WLAN.",
+        src: "/assets/projects/network-security/network-security-wlan.png",
+        alt: "Cisco wireless controller page showing Sales WiFi and Guest WiFi WLANs.",
+        kind: "monitor",
+      },
       "Syslog",
     ],
   },
@@ -667,10 +736,7 @@ function App() {
                         </summary>
 
                         <div className="evidence-panel">
-                          <p className="evidence-intro">
-                            Real interface, schematic, and PCB documentation from
-                            the SolAlign project.
-                          </p>
+                          <p className="evidence-intro">{project.evidenceIntro}</p>
 
                           <div className="evidence-gallery">
                             {project.evidence.map((item) => (
