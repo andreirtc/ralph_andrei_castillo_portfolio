@@ -1,16 +1,35 @@
-# React + Vite
+# Ralph Andrei T. Castillo — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Professional portfolio website for Ralph Andrei T. Castillo, a BS Computer Engineering student at the Polytechnic University of the Philippines – Sta. Mesa.
 
-Currently, two official plugins are available:
+## Focus Areas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Hardware troubleshooting and technical support
+- PC assembly, upgrades, diagnostics, and system readiness
+- Embedded systems and electronics integration
+- Networking design and foundational enterprise networking
+- Technical documentation, testing, and project leadership
+- Entry-level software and web-development collaboration
 
-## React Compiler
+## Featured Work
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **SolAlign** — Dual-Axis Solar Tracking and Monitoring System
+- **Enterprise Network Security and Automation Design**
+- **Enterprise Network Infrastructure Design**
+- **MRI Brain Tumor Image Classification Using VGG16**
+- **Windsurf** — Interactive Data Structures and Algorithms Learning Platform
+- **ActiveCampus Go** — PUP Technology Festival 2025 Hackathon Project
 
-## Expanding the ESLint configuration
+## Built With
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- JavaScript
+- CSS
+- Git and GitHub
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
