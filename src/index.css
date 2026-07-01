@@ -998,6 +998,18 @@ svg {
   grid-column: span 6;
 }
 
+.evidence-item--mri-metrics {
+  grid-column: span 6;
+}
+
+.evidence-item--mri-wide {
+  grid-column: span 6;
+}
+
+.evidence-item--mri-half {
+  grid-column: span 3;
+}
+
 .evidence-item--proof,
 .evidence-item--console,
 .evidence-item--monitor {
@@ -1054,6 +1066,27 @@ svg {
 .evidence-item--proof .evidence-media img,
 .evidence-item--console .evidence-media img,
 .evidence-item--monitor .evidence-media img {
+  object-fit: contain;
+}
+
+.evidence-item--mri-metrics .evidence-media {
+  aspect-ratio: 16 / 7;
+  background: #ffffff;
+}
+
+.evidence-item--mri-wide .evidence-media {
+  aspect-ratio: 16 / 8;
+  background: #ffffff;
+}
+
+.evidence-item--mri-half .evidence-media {
+  aspect-ratio: 16 / 10;
+  background: #ffffff;
+}
+
+.evidence-item--mri-metrics .evidence-media img,
+.evidence-item--mri-wide .evidence-media img,
+.evidence-item--mri-half .evidence-media img {
   object-fit: contain;
 }
 
@@ -1596,6 +1629,12 @@ svg {
   .evidence-item--proof,
   .evidence-item--console,
   .evidence-item--monitor {
+    grid-column: span 1;
+  }
+
+  .evidence-item--mri-metrics,
+  .evidence-item--mri-wide,
+  .evidence-item--mri-half {
     grid-column: span 1;
   }
 

@@ -266,22 +266,80 @@ const featuredProjects = [
     subtitle: "Pattern Recognition Project",
     course: "Pattern Recognition",
     role: "Project Lead / Machine Learning Developer",
-    visualLabel: "VGG16 • MRI Images • Evaluation",
+    visualLabel: "MRI Dataset • VGG16 • Evaluation",
     visualCode: "89.56% ACC.",
     className: "visual-mri",
+    coverImage: "/assets/projects/mri-vgg16/mri-cover-samples.png",
+    coverAlt:
+      "Sample MRI images from the four classes used in the VGG16 brain tumor image-classification project.",
+    coverNote:
+      "MRI samples across Glioma, Meningioma, No Tumor, and Pituitary classes.",
     challenge:
-      "Train and evaluate an image-classification model across four MRI categories using a structured machine-learning workflow.",
+      "Develop and evaluate an image-classification workflow that can distinguish four brain MRI categories using transfer learning.",
     contribution:
-      "Led the project and developed the VGG16 transfer-learning workflow using Python and Google Colab.",
+      "Led the project and developed the VGG16 transfer-learning workflow in Python and Google Colab, including preprocessing, augmentation, training, fine-tuning, evaluation, and result visualization.",
     outcome:
-      "Evaluated 5,091 MRI images across pituitary tumor, no tumor, glioma, and meningioma classes; achieved 89.56% accuracy, 93.48% precision, 93.24% recall, and 93.27% F1-score.",
+      "Evaluated a VGG16-based model using 7,200 MRI images across four classes. Final testing achieved 89.56% accuracy, 89.61% weighted precision, 89.56% weighted recall, and 89.31% weighted F1-score.",
     technologies: [
       "Python",
       "Google Colab",
       "VGG16",
       "TensorFlow",
       "Transfer Learning",
-      "Data Visualization",
+      "Data Augmentation",
+      "Model Evaluation",
+    ],
+    evidenceIntro:
+      "Academic machine-learning project documentation showing the dataset structure, training behavior, predictions, and final evaluation. This project is not a clinical diagnostic tool.",
+    evidence: [
+      {
+        title: "Final Performance Metrics",
+        description:
+          "Final test evaluation: 89.56% accuracy, 89.61% weighted precision, 89.56% weighted recall, 89.31% weighted F1-score, and 0.3630 test loss.",
+        src: "/assets/projects/mri-vgg16/mri-performance-metrics.png",
+        alt: "Final VGG16 performance metrics table.",
+        kind: "mri-metrics",
+      },
+      {
+        title: "Confusion Matrix",
+        description:
+          "Raw-count and normalized confusion matrices showing class-level performance for Glioma, Meningioma, No Tumor, and Pituitary categories.",
+        src: "/assets/projects/mri-vgg16/mri-confusion-matrix.png",
+        alt: "VGG16 confusion matrix for four MRI classes.",
+        kind: "mri-wide",
+      },
+      {
+        title: "VGG16 Training History",
+        description:
+          "Training and validation accuracy and loss across the initial training and fine-tuning phases.",
+        src: "/assets/projects/mri-vgg16/mri-training-history.png",
+        alt: "VGG16 training and validation accuracy and loss history.",
+        kind: "mri-wide",
+      },
+      {
+        title: "Sample Predictions",
+        description:
+          "Twenty sample predictions showing actual labels, predicted labels, confidence scores, and transparent examples of both correct and incorrect classifications.",
+        src: "/assets/projects/mri-vgg16/mri-sample-predictions.png",
+        alt: "Twenty MRI sample predictions with actual and predicted labels.",
+        kind: "mri-wide",
+      },
+      {
+        title: "Dataset Distribution",
+        description:
+          "Balanced dataset structure: 1,400 training images and 400 testing images per class, for 5,600 training and 1,600 testing images overall.",
+        src: "/assets/projects/mri-vgg16/mri-dataset-distribution.png",
+        alt: "Dataset distribution chart for the four MRI classes.",
+        kind: "mri-half",
+      },
+      {
+        title: "Data Augmentation",
+        description:
+          "Original MRI image alongside augmented examples including rotation, horizontal flip, zoom, width shift, height shift, brightness adjustment, shear, and combined transformations.",
+        src: "/assets/projects/mri-vgg16/mri-data-augmentation.png",
+        alt: "MRI data augmentation examples.",
+        kind: "mri-half",
+      },
     ],
   },
   {
