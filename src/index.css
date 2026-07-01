@@ -906,6 +906,21 @@ svg {
   height: 16px;
 }
 
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  margin-top: 24px;
+}
+
+.project-actions .project-link {
+  margin-top: 0;
+}
+
+.project-link-demo {
+  color: var(--accent);
+}
+
 /* SolAlign evidence gallery */
 
 .evidence-details {
@@ -1090,6 +1105,29 @@ svg {
   object-fit: contain;
 }
 
+.evidence-item--windsurf-wide {
+  grid-column: span 6;
+}
+
+.evidence-item--windsurf-half {
+  grid-column: span 3;
+}
+
+.evidence-item--windsurf-wide .evidence-media {
+  aspect-ratio: 16 / 8;
+  background: #17141d;
+}
+
+.evidence-item--windsurf-half .evidence-media {
+  aspect-ratio: 16 / 10;
+  background: #17141d;
+}
+
+.evidence-item--windsurf-wide .evidence-media img,
+.evidence-item--windsurf-half .evidence-media img {
+  object-fit: cover;
+}
+
 .evidence-open {
   position: absolute;
   right: 9px;
@@ -1115,6 +1153,14 @@ svg {
   height: 13px;
 }
 
+
+.visual-windsurf.has-cover {
+  aspect-ratio: 16 / 10;
+}
+
+.visual-windsurf.has-cover::after {
+  border-color: rgba(184, 132, 255, 0.5);
+}
 .evidence-media:hover img {
   transform: scale(1.035);
 }
@@ -1635,6 +1681,11 @@ svg {
   .evidence-item--mri-metrics,
   .evidence-item--mri-wide,
   .evidence-item--mri-half {
+    grid-column: span 1;
+  }
+
+  .evidence-item--windsurf-wide,
+  .evidence-item--windsurf-half {
     grid-column: span 1;
   }
 

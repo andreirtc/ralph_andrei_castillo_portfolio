@@ -102,12 +102,12 @@ const featuredProjects = [
     course: "Microprocessors",
     role: "Project Lead / Embedded Hardware Lead",
     visualLabel: "Prototype • PCB • Firmware",
-    visualCode: "ATMEGA328P",
     className: "visual-solalign",
     coverImage: "/assets/projects/solalign/solalign-cover.webp",
     coverAlt:
       "SolAlign dual-axis solar tracking prototype with a front-facing solar panel and keypad control enclosure.",
-    coverNote: "Presentation-edited overview based on the actual prototype.",
+    coverNote:
+      "Presentation-edited overview based on the actual prototype.",
     challenge:
       "Turn a microcontroller concept into a functioning standalone tracker with sensing, control, monitoring, and user interaction.",
     contribution:
@@ -348,15 +348,20 @@ const featuredProjects = [
     subtitle: "Interactive Data Structures and Algorithms Learning Platform",
     course: "Data Structures and Algorithms",
     role: "Project Lead / Web Development Contributor",
-    visualLabel: "Learning Platform • Rail Visualizer",
+    visualLabel: "DSA Learning • Graph Visualizer • Team Project",
     visualCode: "6-MEMBER TEAM",
     className: "visual-windsurf",
+    coverImage: "/assets/projects/windsurf/windsurf-route-visualizer.png",
+    coverAlt:
+      "Windsurf Metro Manila Railway Network route visualizer with station selection, route details, and estimated travel time.",
+    coverNote:
+      "Interactive Metro Manila railway route visualizer using graph concepts.",
     challenge:
-      "Make data-structures learning more interactive while creating an understandable route-visualization experience.",
+      "Create a more approachable way to learn data structures and algorithms through interactive visualizations and practical examples.",
     contribution:
-      "Led a six-member team and contributed to requirements, integration, testing, documentation, and web-development features in a collaborative workflow.",
+      "Led a six-member team and contributed to project direction, requirements, integration, testing, documentation, and selected web-development features in a collaborative workflow.",
     outcome:
-      "Developed a Metro Manila rail-route visualizer with departure and destination selection, route display, estimated travel time, station animation, and destination voice alerts.",
+      "Delivered an interactive learning platform with data-structure operations, sorting visualizations, and a Metro Manila rail-route visualizer featuring departure and destination selection, route display, estimated travel time, station progression, and destination voice alerts.",
     technologies: [
       "HTML",
       "CSS",
@@ -364,7 +369,38 @@ const featuredProjects = [
       "React",
       "Python",
       "GitHub",
+      "Graph Concepts",
     ],
+    evidenceIntro:
+      "Selected screens from the collaborative Windsurf learning platform. The project combines interactive data-structure and algorithm demonstrations with a graph-based Metro Manila railway route visualizer.",
+    evidence: [
+      {
+        title: "Platform Homepage",
+        description:
+          "Landing page introducing Windsurf as an interactive platform for exploring data structures and algorithms.",
+        src: "/assets/projects/windsurf/windsurf-home.png",
+        alt: "Windsurf homepage introducing interactive data structures and algorithms learning.",
+        kind: "windsurf-wide",
+      },
+      {
+        title: "Learning Path Selection",
+        description:
+          "Structured entry point separating Data Structures and Algorithms learning paths.",
+        src: "/assets/projects/windsurf/windsurf-learning-paths.png",
+        alt: "Windsurf screen with Data Structures and Algorithms learning path choices.",
+        kind: "windsurf-half",
+      },
+      {
+        title: "Queue Operations Visualizer",
+        description:
+          "Interactive queue demonstration with enqueue, dequeue, peek, size, and activity-log features.",
+        src: "/assets/projects/windsurf/windsurf-queue-operations.png",
+        alt: "Windsurf queue operations visualizer with interactive controls and operation log.",
+        kind: "windsurf-half",
+      },
+    ],
+    demoLink: "https://windsurfdsa.up.railway.app",
+    demoLabel: "Open live demo",
     link: "https://github.com/andreirtc/Windsurf",
     linkLabel: "View repository",
   },
@@ -831,16 +867,32 @@ function App() {
                       </details>
                     )}
 
-                    {project.link && (
-                      <a
-                        className="project-link"
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {project.linkLabel}
-                        <ExternalArrow />
-                      </a>
+                    {(project.demoLink || project.link) && (
+                      <div className="project-actions">
+                        {project.demoLink && (
+                          <a
+                            className="project-link project-link-demo"
+                            href={project.demoLink}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {project.demoLabel}
+                            <ExternalArrow />
+                          </a>
+                        )}
+
+                        {project.link && (
+                          <a
+                            className="project-link"
+                            href={project.link}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {project.linkLabel}
+                            <ExternalArrow />
+                          </a>
+                        )}
+                      </div>
                     )}
                   </div>
                 </article>
