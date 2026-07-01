@@ -1259,3 +1259,109 @@ svg {
     flex-direction: column;
   }
 }
+
+/* ----------------------------------------
+   Subtle portfolio motion
+----------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0) scale(0.985);
+  transition:
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1)
+      var(--reveal-delay, 0ms),
+    transform 1000ms cubic-bezier(0.16, 1, 0.3, 1)
+      var(--reveal-delay, 0ms),
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.hero-copy.reveal {
+  transform: translate3d(-18px, 18px, 0);
+}
+
+.hero-copy.reveal.is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+.profile-card.reveal {
+  transform: translate3d(22px, 18px, 0) scale(0.985);
+}
+
+.profile-card.reveal.is-visible {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.project-visual::after {
+  transition: opacity 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .profile-card.is-visible:hover,
+  .project-card.is-visible:hover,
+  .supporting-project-card.is-visible:hover,
+  .skill-card.is-visible:hover,
+  .credential-card.is-visible:hover,
+  .resource-card.is-visible:hover {
+    border-color: color-mix(in srgb, var(--accent) 48%, var(--line));
+    box-shadow: 0 18px 38px rgba(24, 42, 48, 0.11);
+  }
+
+  .project-card.is-visible:hover .project-visual::after {
+    opacity: 0.52;
+  }
+}
+
+@keyframes ambient-drift-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-18px, 14px, 0);
+  }
+}
+
+@keyframes ambient-drift-right {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(14px, -16px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero::before {
+    animation: ambient-drift-left 22s ease-in-out infinite alternate;
+  }
+
+  .hero::after {
+    animation: ambient-drift-right 26s ease-in-out infinite alternate;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero::before,
+  .hero::after {
+    animation: none;
+  }
+}

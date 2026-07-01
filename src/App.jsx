@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const EMAIL = "castilloralphandreit@gmail.com";
 const LINKEDIN = "https://www.linkedin.com/in/ralphcastillo02/";
@@ -279,6 +279,52 @@ function App() {
       // The page will still work even when browser storage is unavailable.
     }
   }, [theme]);
+
+    useLayoutEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const motionTargets = Array.from(
+      document.querySelectorAll(
+        ".hero-copy, .profile-card, .proof-card, .section-heading, .about-content, .experience-card, .project-card, .supporting-project-card, .skill-card, .credential-card, .resource-card, .contact-card"
+      )
+    );
+
+    motionTargets.forEach((target, index) => {
+      target.classList.add("reveal");
+      target.style.setProperty("--reveal-delay", `${(index % 4) * 110}ms`);
+    });
+
+    if (prefersReducedMotion) {
+      motionTargets.forEach((target) => {
+        target.classList.add("is-visible");
+      });
+
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -36px 0px",
+      }
+    );
+
+    motionTargets.forEach((target) => observer.observe(target));
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleCopyEmail = async () => {
     try {
