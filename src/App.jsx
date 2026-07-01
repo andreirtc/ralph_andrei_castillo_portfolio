@@ -96,6 +96,7 @@ const experiences = [
 
 const featuredProjects = [
   {
+    id: "solalign",
     title: "SolAlign",
     subtitle: "Dual-Axis Solar Tracking and Monitoring System",
     course: "Microprocessors",
@@ -103,6 +104,10 @@ const featuredProjects = [
     visualLabel: "Prototype • PCB • Firmware",
     visualCode: "ATMEGA328P",
     className: "visual-solalign",
+    coverImage: "/assets/projects/solalign/solalign-cover.webp",
+    coverAlt:
+      "SolAlign dual-axis solar tracking prototype with a front-facing solar panel and keypad control enclosure.",
+    coverNote: "Presentation-edited overview based on the actual prototype.",
     challenge:
       "Turn a microcontroller concept into a functioning standalone tracker with sensing, control, monitoring, and user interaction.",
     contribution:
@@ -118,8 +123,51 @@ const featuredProjects = [
       "Keypad",
       "Servos",
     ],
+    evidence: [
+      {
+        title: "LDR Diagnostic Display",
+        description:
+          "LCD output showing top-left, top-right, bottom-left, and bottom-right sensor readings used by the tracking logic.",
+        src: "/assets/projects/solalign/solalign-lcd-ldr.webp",
+        alt: "SolAlign LCD displaying TL, TR, BL, and BR LDR diagnostic readings.",
+        kind: "lcd",
+      },
+      {
+        title: "Manual Positioning Mode",
+        description:
+          "Keypad interface confirming Manual Mode, allowing direct user control of panel positioning.",
+        src: "/assets/projects/solalign/solalign-lcd-manual.webp",
+        alt: "SolAlign keypad enclosure with LCD displaying Manual Mode.",
+        kind: "lcd",
+      },
+      {
+        title: "Park / Stow Mode",
+        description:
+          "Keypad interface showing Park Mode for returning the panel to its designated safe position.",
+        src: "/assets/projects/solalign/solalign-lcd-park.webp",
+        alt: "SolAlign keypad enclosure with LCD displaying Park Mode.",
+        kind: "lcd",
+      },
+      {
+        title: "Circuit Schematic",
+        description:
+          "Standalone ATmega328P schematic in EasyEDA, including power rails, INA219 monitoring, I2C LCD, keypad, LDR array, servos, and control buttons.",
+        src: "/assets/projects/solalign/solalign-schematic.png",
+        alt: "SolAlign EasyEDA circuit schematic.",
+        kind: "diagram",
+      },
+      {
+        title: "Custom PCB Routing",
+        description:
+          "EasyEDA PCB routing co-developed for the standalone controller and interface connections.",
+        src: "/assets/projects/solalign/solalign-pcb-layout.png",
+        alt: "SolAlign EasyEDA PCB layout.",
+        kind: "diagram",
+      },
+    ],
   },
   {
+    id: "network-security",
     title: "Enterprise Network Security and Automation Design",
     subtitle: "Cisco Packet Tracer Enterprise Network",
     course: "Computer Networks and Security",
@@ -144,6 +192,7 @@ const featuredProjects = [
     ],
   },
   {
+    id: "mri-vgg16",
     title: "MRI Brain Tumor Image Classification Using VGG16",
     subtitle: "Pattern Recognition Project",
     course: "Pattern Recognition",
@@ -167,6 +216,7 @@ const featuredProjects = [
     ],
   },
   {
+    id: "windsurf",
     title: "Windsurf",
     subtitle: "Interactive Data Structures and Algorithms Learning Platform",
     course: "Data Structures and Algorithms",
@@ -261,8 +311,7 @@ function SectionHeading({ eyebrow, title, description }) {
 function App() {
   const [theme, setTheme] = useState(() => {
     try {
-      const savedTheme = localStorage.getItem("portfolio-theme");
-      return savedTheme || "light";
+      return localStorage.getItem("portfolio-theme") || "light";
     } catch {
       return "light";
     }
@@ -276,11 +325,11 @@ function App() {
     try {
       localStorage.setItem("portfolio-theme", theme);
     } catch {
-      // The page will still work even when browser storage is unavailable.
+      // The site still works even when browser storage is unavailable.
     }
   }, [theme]);
 
-    useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -297,19 +346,14 @@ function App() {
     });
 
     if (prefersReducedMotion) {
-      motionTargets.forEach((target) => {
-        target.classList.add("is-visible");
-      });
-
+      motionTargets.forEach((target) => target.classList.add("is-visible"));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
+          if (!entry.isIntersecting) return;
 
           entry.target.classList.add("is-visible");
           observer.unobserve(entry.target);
@@ -331,9 +375,7 @@ function App() {
       await navigator.clipboard.writeText(EMAIL);
       setCopied(true);
 
-      setTimeout(() => {
-        setCopied(false);
-      }, 1800);
+      window.setTimeout(() => setCopied(false), 1800);
     } catch {
       setCopied(false);
     }
@@ -349,6 +391,7 @@ function App() {
         <div className="container header-inner">
           <a className="brand" href="#top" aria-label="Go to top">
             <span className="brand-mark">RC</span>
+
             <span className="brand-text">
               Ralph Castillo
               <small>Computer Engineering</small>
@@ -359,6 +402,7 @@ function App() {
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
           </nav>
 
@@ -383,8 +427,8 @@ function App() {
               <p className="eyebrow">Open to internship opportunities</p>
 
               <h1>
-                Hands-on computer engineering for systems that need to{" "}
-                <span>work.</span>
+                Hands-on computer engineering for systems that need{" "}
+                <span>to work.</span>
               </h1>
 
               <p className="hero-description">
@@ -548,18 +592,36 @@ function App() {
 
             <div className="featured-project-grid">
               {featuredProjects.map((project) => (
-                <article className="project-card" key={project.title}>
-                  <div className={`project-visual ${project.className}`}>
+                <article className="project-card" key={project.id}>
+                  <div
+                    className={`project-visual ${project.className} ${
+                      project.coverImage ? "has-cover" : ""
+                    }`}
+                  >
+                    {project.coverImage && (
+                      <img
+                        className="project-cover-image"
+                        src={project.coverImage}
+                        alt={project.coverAlt}
+                      />
+                    )}
+
                     <div className="project-visual-top">
                       <span>{project.visualLabel}</span>
-                      <span>Portfolio evidence</span>
+                      <span>
+                        {project.coverImage ? "Prototype overview" : "Portfolio evidence"}
+                      </span>
                     </div>
 
-                    <p className="project-visual-code">{project.visualCode}</p>
+                    {!project.coverImage && (
+                      <p className="project-visual-code">{project.visualCode}</p>
+                    )}
 
-                    <div className="project-visual-bottom">
-                      Project visual will be added after documentation is ready.
-                    </div>
+                    <p className="project-visual-bottom">
+                      {project.coverImage
+                        ? project.coverNote
+                        : "Project visual will be added after documentation is ready."}
+                    </p>
                   </div>
 
                   <div className="project-content">
@@ -593,6 +655,57 @@ function App() {
                         <span key={technology}>{technology}</span>
                       ))}
                     </div>
+
+                    {project.evidence && (
+                      <details className="evidence-details">
+                        <summary>
+                          <span>Explore technical evidence</span>
+                          <span className="evidence-summary-meta">
+                            {project.evidence.length} items
+                          </span>
+                          <span className="evidence-summary-icon">+</span>
+                        </summary>
+
+                        <div className="evidence-panel">
+                          <p className="evidence-intro">
+                            Real interface, schematic, and PCB documentation from
+                            the SolAlign project.
+                          </p>
+
+                          <div className="evidence-gallery">
+                            {project.evidence.map((item) => (
+                              <figure
+                                className={`evidence-item evidence-item--${item.kind}`}
+                                key={item.title}
+                              >
+                                <a
+                                  className="evidence-media"
+                                  href={item.src}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  aria-label={`Open ${item.title} in full size`}
+                                >
+                                  <img
+                                    src={item.src}
+                                    alt={item.alt}
+                                    loading="lazy"
+                                  />
+                                  <span className="evidence-open">
+                                    Open image
+                                    <ExternalArrow />
+                                  </span>
+                                </a>
+
+                                <figcaption>
+                                  <strong>{item.title}</strong>
+                                  <span>{item.description}</span>
+                                </figcaption>
+                              </figure>
+                            ))}
+                          </div>
+                        </div>
+                      </details>
+                    )}
 
                     {project.link && (
                       <a
@@ -679,7 +792,9 @@ function App() {
             </div>
 
             <div className="credential-card">
-              <p className="credential-label">Bachelor of Science in Computer Engineering</p>
+              <p className="credential-label">
+                Bachelor of Science in Computer Engineering
+              </p>
               <h3>Polytechnic University of the Philippines – Sta. Mesa</h3>
               <p>September 2023 – Present</p>
               <p>Expected graduation: September 2027</p>
