@@ -501,7 +501,7 @@ svg {
 
 .proof-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .proof-card {
@@ -1849,6 +1849,18 @@ svg {
 
   .supporting-evidence summary > span:nth-child(2) {
     display: none;
+  }
+
+  .proof-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .proof-card:nth-child(2) {
+    border-right: 0;
+  }
+
+  .proof-card:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
   }
 
   .evidence-gallery {

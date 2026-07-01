@@ -710,22 +710,29 @@ function App() {
             <article className="proof-card">
               <p className="proof-number">400+</p>
               <p className="proof-label">
-                desktops, laptops, all-in-one PCs, mini PCs, and server units
-                tested and documented
+                computer systems tested and documented during technical internship work
               </p>
             </article>
 
             <article className="proof-card">
               <p className="proof-number">100+</p>
               <p className="proof-label">
-                desktops assembled during technical internship work
+                desktop systems assembled during technical internship work
               </p>
             </article>
 
             <article className="proof-card">
-              <p className="proof-number">2021</p>
+              <p className="proof-number">80+</p>
               <p className="proof-label">
-                started paid referral-based computer repair and technical support
+                client computers diagnosed, repaired, upgraded, or set up through
+                referral-based support
+              </p>
+            </article>
+
+            <article className="proof-card">
+              <p className="proof-number">5+</p>
+              <p className="proof-label">
+                years of paid freelance computer technician experience
               </p>
             </article>
           </div>
