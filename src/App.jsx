@@ -408,11 +408,40 @@ const featuredProjects = [
 
 const supportingProjects = [
   {
+    id: "network-infrastructure",
     title: "Enterprise Network Infrastructure Design",
+    subtitle: "Two-Storey Physical Network Architecture",
+    course: "Data & Digital Communications",
     role: "Project Lead / Physical Network Designer",
     description:
-      "Designed a physical network floor plan for a two-storey facility supporting 60+ endpoints. Covered device and rack placement, cabling routes, MDF/IDF structure, Wi-Fi coverage planning, and a redundant fiber-backbone concept.",
+      "Led the physical infrastructure design for a two-storey facility supporting 60+ endpoints. Planned device and rack placement, MDF/IDF structure, Wi-Fi coverage, structured cabling routes, and a redundant fiber-backbone concept.",
+    scopeNote:
+      "This project focused on physical network design. I did not personally build the Packet Tracer logical configuration.",
     tags: ["Network Design", "MDF / IDF", "Fiber Backbone", "Wi-Fi Planning"],
+    coverImage:
+      "/assets/projects/network-infrastructure/network-infrastructure-physical-topology.png",
+    coverAlt:
+      "Two-storey enterprise physical network topology showing the MDF, IDF, network racks, departments, endpoint counts, and fiber backbone.",
+    evidenceIntro:
+      "Physical infrastructure planning materials showing endpoint placement, Wi-Fi coverage, structured cabling, and inter-floor backbone routing.",
+    evidence: [
+      {
+        title: "Network Device Placement and Layout",
+        description:
+          "Two-storey floor layout showing endpoint allocation, access points, printers, cameras, IP phones, and rack locations across departments.",
+        src:
+          "/assets/projects/network-infrastructure/network-infrastructure-device-placement.png",
+        alt: "Two-storey floor plan showing network device placement and Wi-Fi access-point locations.",
+      },
+      {
+        title: "Structured Cabling and Wiring Route Plan",
+        description:
+          "Cable-route plan showing CAT6 data runs, PoE cabling, the fiber-optic backbone, and the cable-riser connection between floors.",
+        src:
+          "/assets/projects/network-infrastructure/network-infrastructure-cabling-plan.png",
+        alt: "Two-storey structured cabling plan showing CAT6, PoE, fiber backbone, and cable riser routes.",
+      },
+    ],
   },
   {
     title: "ActiveCampus Go",
@@ -901,31 +930,94 @@ function App() {
 
             <div className="supporting-projects">
               {supportingProjects.map((project) => (
-                <article className="supporting-project-card" key={project.title}>
-                  <p className="project-course">Supporting project</p>
-                  <h3>{project.title}</h3>
-                  <p className="project-role">{project.role}</p>
-                  <p className="supporting-project-description">
-                    {project.description}
-                  </p>
-
-                  <div className="tag-list">
-                    {project.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-
-                  {project.link && (
-                    <a
-                      className="project-link"
-                      href={project.link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {project.linkLabel}
-                      <ExternalArrow />
-                    </a>
+                <article
+                  className={`supporting-project-card ${
+                    project.coverImage ? "supporting-project-card--visual" : ""
+                  }`}
+                  key={project.id || project.title}
+                >
+                  {project.coverImage && (
+                    <div className="supporting-project-cover">
+                      <img src={project.coverImage} alt={project.coverAlt} />
+                      <div className="supporting-project-cover-label">
+                        <span>{project.course}</span>
+                        <span>Physical infrastructure design</span>
+                      </div>
+                    </div>
                   )}
+
+                  <div className="supporting-project-body">
+                    <p className="project-course">Supporting project</p>
+                    <h3>{project.title}</h3>
+                    {project.subtitle && (
+                      <p className="project-subtitle">{project.subtitle}</p>
+                    )}
+                    <p className="project-role">{project.role}</p>
+                    <p className="supporting-project-description">
+                      {project.description}
+                    </p>
+                    {project.scopeNote && (
+                      <p className="supporting-project-note">
+                        <strong>Scope:</strong> {project.scopeNote}
+                      </p>
+                    )}
+
+                    <div className="tag-list">
+                      {project.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+
+                    {project.evidence && (
+                      <details className="supporting-evidence">
+                        <summary>
+                          <span>Explore design evidence</span>
+                          <span>{project.evidence.length} items</span>
+                          <span className="evidence-summary-icon">+</span>
+                        </summary>
+
+                        <div className="supporting-evidence-panel">
+                          <p>{project.evidenceIntro}</p>
+
+                          <div className="supporting-evidence-gallery">
+                            {project.evidence.map((item) => (
+                              <figure key={item.title}>
+                                <a
+                                  href={item.src}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  aria-label={`Open ${item.title} in full size`}
+                                >
+                                  <img
+                                    src={item.src}
+                                    alt={item.alt}
+                                    loading="lazy"
+                                  />
+                                </a>
+
+                                <figcaption>
+                                  <strong>{item.title}</strong>
+                                  <span>{item.description}</span>
+                                </figcaption>
+                              </figure>
+                            ))}
+                          </div>
+                        </div>
+                      </details>
+                    )}
+
+                    {project.link && (
+                      <a
+                        className="project-link"
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {project.linkLabel}
+                        <ExternalArrow />
+                      </a>
+                    )}
+                  </div>
                 </article>
               ))}
             </div>
